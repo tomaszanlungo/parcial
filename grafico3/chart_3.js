@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const mapaFetch = d3.json('barrios-caba.geojson')
 const dataFetch = d3.dsv(';', '../data/147_vehiculos_mal_estacionados.csv', d3.autoType)
 
@@ -9,9 +8,6 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
   console.log('reclamosPorBarrio', reclamosPorBarrio)
 })
 
-=======
-
-
  /* Agregamos al DOM la visualización chartMap */
  d3.select('#chart_3').append(() => chartMap)
->>>>>>> 5feca20e6647b8655cec72dac43710059aedc638
+
