@@ -1,3 +1,13 @@
 body{
     background-color: palevioletred;
 }
+
+#chart_1{
+    display: grid;
+    place-content: center;  
+}
+
+#chart_1 svg{
+    background-color: palevioletred;
+    
+}
