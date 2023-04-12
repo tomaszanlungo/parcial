@@ -23,33 +23,34 @@ console.log(data2)
        x: {
          type: 'time',
          tickFormat: d3.timeFormat('%H'),
+         
        },
-        y: {
+        y: { 
           grid: true,
-          label: 'domicilio_barrio',
+          label: 'cantidad ',
       },
       
       marks: [
-        Plot.dot(data, {
-          y: "domicilio_barrio",
-          x: "hora_ingreso",
-          //r: "cantidad",
-          fill: "prestacion",
-          //opacity: 0.5,
-          }),
-          Plot.rectY(data,
-            Plot.binX(
-              { x: 'count', title: d => d[0].domicilio_barrio },
-              
-              {
-                // https://github.com/d3/d3-time-format
-                x: d => d3.timeParse('%H:%M:%S')(d.hora_ingreso),
-                // https://github.com/d3/d3-time#timeHour
-                // Agrupamos en intervalo de horas
-                thresholds: d3.timeHour,
-              },
-            ),
+        Plot.dot(data,
+          // y: "domicilio_barrio",
+          // x: "time",
+          // r: "cantidad",
+          // fill: "prestacion",
+          
+          
+          Plot.binX(
+            { y: 'count', title: d => d[0].hora_ingreso},
+            
+            {
+              fill: "genero",  
+              // https://github.com/d3/d3-time-format
+              x: d => d3.timeParse('%H:%M:%S')(d.hora_ingreso),
+              // https://github.com/d3/d3-time#timeHour
+              // Agrupamos en intervalo de horas
+              thresholds: d3.timeHour,
+            },
           ),
+        ),
       ],
   
       grid: true,
