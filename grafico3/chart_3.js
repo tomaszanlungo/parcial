@@ -1,7 +1,5 @@
-
 const data = d3.dsv(';', '../data/147_vehiculos_mal_estacionados.csv', d3.autoType)
 
-  
 /* Agrupamos reclamos x barrio */
 const reclamosPorBarrio = d3.group(data, d => d.domicilio_barrio) // crea un Map
 console.log('reclamosPorBarrio', reclamosPorBarrio)
@@ -36,18 +34,18 @@ var y = d3.scalePoint()
   .domain(barrios)
   .range([0, height]);
 
-  // Configurar la escala para el tamaño de los círculos
-  var size = d3.scaleLinear()
-  .domain([0, d3.max(reclamosPorBarrio, function(d) { return d[1]; })])
+// Configurar la escala para el tamaño de los círculos
+var size = d3.scaleLinear()
+  .domain([0, d3.max(reclamosPorBarrio, function(d) { return d[1].length; })])
   .range([0, 2 * radius]);
 
 // Dibujar los círculos
 svg.selectAll("circle")
 .data(data)
 .enter().append("circle")
-.attr("cx", function(d) { return x(d.hora); })
-.attr("cy", function(d) { return y(d.barrio); })
-.attr("r", function(d) { return size(reclamosPorBarrio); })
+.attr("cx", function(d) { return x(d.hora_ingreso); })
+.attr("cy", function(d) { return y(d.domicilio_barrio); })
+.attr("r", function(d) { return size(reclamosPorBarrio.get(d.domicilio_barrio).length); })
 .style("fill", "blue");
 
 
