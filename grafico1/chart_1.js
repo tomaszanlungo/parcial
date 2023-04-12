@@ -1,21 +1,21 @@
 const mapaFetch = d3.json('barrios-caba.geojson')
 const dataFetch = d3.dsv(';', '../data/147_vehiculos_mal_estacionados.csv', d3.autoType)
 
-var cant_por_barrio = d3.rollup(data, v => v.length, d => d.domicilio_barrio)
-console.log(cant_por_barrio)
-var data2 = Array.from(cant_por_barrio).map(([key, value]) => {
-    return {
-        'barrio': key,
-        'cantidad': value
-    }
-})
-
+// var cant_por_barrio = d3.rollup(data, v => v.length, d => d.domicilio_barrio)
+// console.log(cant_por_barrio)
+// var data2 = Array.from(cant_por_barrio).map(([key, value]) => {
+//     return {
+//         'barrio': key,
+//         'cantidad': value
+//     }
+// })
 
 Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
   
   /* Agrupamos reclamos x barrio */
   const reclamosPorBarrio = d3.group(data, d => d.domicilio_barrio) // crea un Map
   console.log('reclamosPorBarrio', reclamosPorBarrio)
+
   
   /* A cada feature del mapa le agregamos la prop DENUNCIAS */
   barrios.features.forEach(d => {
@@ -37,8 +37,8 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
     color: {
       // Quantize continuo (cant. denuncias) -> discreto (cant. colores)
       type: 'quantize', 
-      n: 10,
-      scheme: 'ylorbr',
+      n: 7,
+      scheme: 'blues',
       label: 'Cantidad de denuncias',
       legend: true,
     },
@@ -55,8 +55,8 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
           fill: "currentColor",
           stroke: "white",
           textAnchor: "center",
-          dx: 4,
-          filter: (d) => d.properties.DENUNCIAS > 80
+          dx: 5,
+          filter: (d) => d.properties.DENUNCIAS > 400 //solo muestro el nombre de los barrios con denuncias mayores a 80
         })
       )
     ],
