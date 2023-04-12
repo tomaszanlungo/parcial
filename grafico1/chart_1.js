@@ -1,15 +1,6 @@
 const mapaFetch = d3.json('barrios-caba.geojson')
 const dataFetch = d3.dsv(';', '../data/147_vehiculos_mal_estacionados.csv', d3.autoType)
 
-// var cant_por_barrio = d3.rollup(data, v => v.length, d => d.domicilio_barrio)
-// console.log(cant_por_barrio)
-// var data2 = Array.from(cant_por_barrio).map(([key, value]) => {
-//     return {
-//         'barrio': key,
-//         'cantidad': value
-//     }
-// })
-
 Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
   
   /* Agrupamos reclamos x barrio */
@@ -38,7 +29,7 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
       // Quantize continuo (cant. denuncias) -> discreto (cant. colores)
       type: 'quantize', 
       n: 7,
-      scheme: 'blues',
+      scheme: 'Blues',
       label: 'Cantidad de denuncias',
       legend: true,
     },
