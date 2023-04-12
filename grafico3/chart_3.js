@@ -1,12 +1,12 @@
-const mapaFetch = d3.json('../data/barrios-caba.geojson')
+
 const dataFetch = d3.dsv(';', '../data/147_vehiculos_mal_estacionados.csv', d3.autoType)
 
-Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
   
-  /* Agrupamos reclamos x barrio */
-  const reclamosPorBarrio = d3.group(data, d => d.domicilio_barrio) // crea un Map
-  console.log('reclamosPorBarrio', reclamosPorBarrio)
-})
+/* Agrupamos reclamos x barrio */
+const reclamosPorBarrio = d3.group(data, d => d.domicilio_barrio) // crea un Map
+console.log('reclamosPorBarrio', reclamosPorBarrio)
+
+console.log(reclamosPorBarrio)
 
 // Configuración del gráfico
 var margin = { top: 50, right: 50, bottom: 50, left: 50 };
@@ -38,7 +38,7 @@ var y = d3.scalePoint()
 
   // Configurar la escala para el tamaño de los círculos
 var size = d3.scaleLinear()
-.domain([0, d3.max(data, function(d) { return d.cant_mal_estacionados; })])
+.domain([0, d3.max(data, function(d) { return reclamosPorBarrio; })])
 .range([0, 2 * radius]);
 
 // Dibujar los círculos
