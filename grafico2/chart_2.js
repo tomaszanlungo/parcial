@@ -1,4 +1,22 @@
 
+//calculamos para cada canal (hora_cierre_contacto - hora_ingreso)
 
- /* Agregamos al DOM la visualización chartMap */
- d3.select('#chart_2').append(() => chartMap)
+//https://observablehq.com/@observablehq/plot-box?collection=@observablehq/plot
+
+
+
+
+
+
+
+
+
+Plot.plot({
+  x: {
+    grid: true,
+    inset: 6
+  },
+  marks: [
+    Plot.boxX(morley, {x: "Speed", y: "Expt"})
+  ]
+})
