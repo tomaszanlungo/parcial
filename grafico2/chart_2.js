@@ -3,20 +3,5 @@
 
 //https://observablehq.com/@observablehq/plot-box?collection=@observablehq/plot
 
-
-
-
-
-
-
-
-
-Plot.plot({
-  x: {
-    grid: true,
-    inset: 6
-  },
-  marks: [
-    Plot.boxX(morley, {x: "Speed", y: "Expt"})
-  ]
-})
+const mapaFetch = d3.json('../data/barrios-caba.geojson')
+const dataFetch = d3.dsv(';', '../data/147_vehiculos_mal_estacionados.csv', d3.autoType)
