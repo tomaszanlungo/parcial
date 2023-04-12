@@ -8,7 +8,6 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
   console.log('reclamosPorBarrio', reclamosPorBarrio)
 })
 
-<<<<<<< Updated upstream
 // Configuración del gráfico
 var margin = { top: 50, right: 50, bottom: 50, left: 50 };
 var width = 500 - margin.left - margin.right;
@@ -51,13 +50,9 @@ svg.selectAll("circle")
 .attr("r", function(d) { return size(reclamosPorBarrio); })
 .style("fill")
 
-=======
->>>>>>> Stashed changes
-
 
  /* Agregamos al DOM la visualización chartMap */
  d3.select('#chart_3').append(() => chartMap)
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
+
+
