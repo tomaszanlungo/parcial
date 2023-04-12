@@ -1,5 +1,5 @@
 
-const dataFetch = d3.dsv(';', '../data/147_vehiculos_mal_estacionados.csv', d3.autoType)
+const data = d3.dsv(';', '../data/147_vehiculos_mal_estacionados.csv', d3.autoType)
 
   
 /* Agrupamos reclamos x barrio */
@@ -37,9 +37,9 @@ var y = d3.scalePoint()
   .range([0, height]);
 
   // Configurar la escala para el tamaño de los círculos
-var size = d3.scaleLinear()
-.domain([0, d3.max(data, function(d) { return reclamosPorBarrio; })])
-.range([0, 2 * radius]);
+  var size = d3.scaleLinear()
+  .domain([0, d3.max(reclamosPorBarrio, function(d) { return d[1]; })])
+  .range([0, 2 * radius]);
 
 // Dibujar los círculos
 svg.selectAll("circle")
@@ -48,7 +48,7 @@ svg.selectAll("circle")
 .attr("cx", function(d) { return x(d.hora); })
 .attr("cy", function(d) { return y(d.barrio); })
 .attr("r", function(d) { return size(reclamosPorBarrio); })
-.style("fill")
+.style("fill", "blue");
 
 
  /* Agregamos al DOM la visualización chartMap */
