@@ -4,8 +4,6 @@ const data = d3.dsv(';', '../data/147_vehiculos_mal_estacionados.csv', d3.autoTy
 const reclamosPorBarrio = d3.group(data, d => d.domicilio_barrio) // crea un Map
 console.log('reclamosPorBarrio', reclamosPorBarrio)
 
-console.log(reclamosPorBarrio)
-
 // Configuración del gráfico
 var margin = { top: 50, right: 50, bottom: 50, left: 50 };
 var width = 500 - margin.left - margin.right;
