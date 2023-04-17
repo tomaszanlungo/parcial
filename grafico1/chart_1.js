@@ -44,13 +44,19 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
         Plot.centroid({
           text: (d) => d.properties.BARRIO,
           fill: "currentColor",
-          stroke: "white",
           textAnchor: "center",
           dx: 5,
           filter: (d) => d.properties.DENUNCIAS > 400 //solo muestro el nombre de los barrios con denuncias mayores a 80
-        })
+        }),{
+          style: {
+            "font-size": "24px", // Establecer el tamaño de fuente en 24px
+            "font-weight": "bold" // Hacer el texto más grueso
+          }
+        }
       )
     ],
+    
+    
   })
 
   /* Agregamos al DOM la visualización chartMap */

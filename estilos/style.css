@@ -9,5 +9,10 @@ body{
 
 #chart_1 svg{
     background-color: palevioletred;
+ 
     
+}
+
+#legend{
+    font-size: larger;
 }
