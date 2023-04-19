@@ -47,7 +47,7 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
         barrios.features,
         Plot.centroid({
           text: (d) => d.properties.BARRIO,
-          fill: "currentColor",
+          fill: "black",
           stroke: "white",
           fontSize: 9,
         
