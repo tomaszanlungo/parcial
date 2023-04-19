@@ -82,22 +82,17 @@
     margin: 15px 0;
   }
 
-
-  #chart_1_cointeiner {
-    max-width: 800px;
-    position: relative;
-  }
-  
-  #chart_1.legend{
-    width: 30%;
-  }
-
   #chart_1 svg{
-    width: 100%;
+/*    width: 300px; */
     height: auto;
   }
-  
 
+  figcaption {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    margin-top: 10px;
+  }
+  
   /* Estilos para el footer */
 footer {
   border-top: 2px solid #FFD100;
