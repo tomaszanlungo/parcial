@@ -47,7 +47,10 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
         barrios.features,
         Plot.centroid({
           text: (d) => d.properties.BARRIO,
-          fontSize: 8,
+          fill: "currentColor",
+          stroke: "white",
+          fontSize: 9,
+        
           dx: -3,
           filter: (d) => d.properties.DENUNCIAS > 400 //solo muestro el nombre de los barrios con denuncias mayores a 80
         }),{
