@@ -32,11 +32,11 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
       scheme: 'Blues',
       label: 'Cantidad de denuncias',
       legend: true,
-      width: 1000,
-      height: 200
+      width: 250,
+      height: 55,
     
     },
-    width: 300,
+    width: 400,
     marks: [
       Plot.geo(barrios, {
         fill: d => d.properties.DENUNCIAS,
@@ -47,9 +47,8 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
         barrios.features,
         Plot.centroid({
           text: (d) => d.properties.BARRIO,
-          fill: "currentColor",
-          textAnchor: "center",
-          dx: 5,
+          fontSize: 8,
+          dx: -3,
           filter: (d) => d.properties.DENUNCIAS > 400 //solo muestro el nombre de los barrios con denuncias mayores a 80
         }),{
           style: {
@@ -60,11 +59,8 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
       )
     ],
     
-    
   })
 
   /* Agregamos al DOM la visualización chartMap */
   d3.select('#chart_1').append(() => chartMap)
-
-
 })
