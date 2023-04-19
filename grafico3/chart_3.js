@@ -63,8 +63,7 @@ d3.dsv(';',  '../data/147_vehiculos_mal_estacionados.csv', d3.autoType).then(dat
           Plot.binX(
             { y: 'count', title: d => d[0].hora_ingreso},
             { 
-              // fill: d => getColor(d), // Usa la función getColor para obtener el color en función de la cantidad
-              // r: "cantidad", title: d => d.cantidad,
+              fill: d => d.cantidad > 30 ? "rgb(8,69,148)" : "rgb(255,0,0)",
               x: d => d3.timeParse('%H:%M:%S')(d.hora_ingreso),
               thresholds: d3.timeHour,
             },

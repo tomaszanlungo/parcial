@@ -2,39 +2,38 @@ d3.dsv(';', '../data/147_vehiculos_mal_estacionados.csv', d3.autoType).then(data
 
     const cant_canal = d3.rollup(data, v => v.length, d => d.canal);
     const data2 = Array.from(cant_canal, ([canal, cantidad]) => ({ canal, cantidad }));
-    const total = d3.sum(data2, d => d.cantidad);
-    const porcentajes = data2.map(d => ({ canal: d.canal, porcentaje: d.cantidad / total }));
-  
-    let chart = Plot.plot(porcentajes,{
-      width: 600,
-      height: 400,
-      color: "Blues",
+
+    console.log(data2)
+
+    //const total = d3.sum(data2, d => d.cantidad);
+    //const porcentajes = data2.map(d => ({ canal: d.canal, porcentaje: d.cantidad / total }));
+
+    var chart = Plot.plot({
+      color: {
+        domain: ["Pocos", "Muchos"],
+        range: ["rgb(8,69,148)", "rgb(255,0,0)"],
+        legend: true
+      },
       marks: [
-        {
-          type: "arc",
-          data: porcentajes,
-          x: { signal: "width / 2" },
-          y: { signal: "height / 2" },
-          outerRadius: { signal: "height / 4" },
-          fill: { field: "canal", scale: "color" },
-          stroke: "white",
-          strokeWidth: 2,
-          tooltip: true,
-          encode: {
-            enter: {
-              angle: { field: "porcentaje", signal: "2 * PI * datum.porcentaje" },
-              startAngle: { signal: "0" },
-              endAngle: { field: "porcentaje", signal: "2 * PI * datum.porcentaje" },
-              tooltip: { signal: "datum.canal + ': ' + (datum.porcentaje * 100).toFixed(2) + '%'" },
-            },
-          },
-        },
+      Plot.barX(data2, {y: 'canal',x: 'cantidad', fill: d => d.cantidad > 4000 ? "rgb(255,0,0)" : "rgb(8,69,148)"}),
+      Plot.text(data2, {x: "cantidad", y: "canal", text: d => (d.cantidad), dx:+15}),
       ],
-      signals: [{ name: "PI", value: Math.PI }],
-    });
+      y: {
+          domain: d3.sort(data2, (a, b) => d3.descending(a.cantidad, b.cantidad)).map(d => d.canal),
+          label: ""
+          },
+
+      x: {
+          label:"",
+          axis: null,
+      },
+      height: 300,
+      marginLeft: 100,
+      marginRight: 50,
+      
+  
+     })
+
     d3.select('#chart_2').append(() => chart)
 });
   
-
-
-
