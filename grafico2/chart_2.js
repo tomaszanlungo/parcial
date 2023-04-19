@@ -16,11 +16,11 @@ d3.dsv(';', '../data/147_vehiculos_mal_estacionados.csv', d3.autoType).then(data
       },
       marks: [
       Plot.barX(data2, {y: 'canal',x: 'cantidad', fill: d => d.cantidad > 4000 ? "rgb(255,0,0)" : "rgb(8,69,148)"}),
-      Plot.text(data2, {x: "cantidad", y: "canal", text: d => (d.cantidad), dx:+15}),
+      Plot.text(data2, {x: "cantidad", y: "canal", text: d => (d.cantidad), dx:+15,fontSize:12}),
       ],
       y: {
           domain: d3.sort(data2, (a, b) => d3.descending(a.cantidad, b.cantidad)).map(d => d.canal),
-          label: ""
+          label: "",
           },
 
       x: {
@@ -30,6 +30,7 @@ d3.dsv(';', '../data/147_vehiculos_mal_estacionados.csv', d3.autoType).then(data
       height: 300,
       marginLeft: 100,
       marginRight: 50,
+      
       
   
      })

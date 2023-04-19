@@ -69,6 +69,7 @@ d3.dsv(';',  '../data/147_vehiculos_mal_estacionados.csv', d3.autoType).then(dat
             },
           ),
         ),
+        
       ],
   
       grid: true,
