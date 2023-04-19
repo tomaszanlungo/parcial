@@ -32,8 +32,11 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
       scheme: 'Blues',
       label: 'Cantidad de denuncias',
       legend: true,
+      width: 1000,
+      height: 200
     
     },
+    width: 300,
     marks: [
       Plot.geo(barrios, {
         fill: d => d.properties.DENUNCIAS,
