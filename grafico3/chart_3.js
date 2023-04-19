@@ -4,22 +4,29 @@ d3.json('https://cdn.jsdelivr.net/npm/d3-time-format@3/locale/es-ES.json').then(
 })
 
 d3.dsv(';',  '../data/147_vehiculos_mal_estacionados.csv', d3.autoType).then(data => {
-  console.log(data)
 
-var cant_autos = d3.rollup(data, v => v.length, d => d.hora_ingreso)
-console.log(cant_autos)
-var data2 = Array.from(cant_autos).map(([key, value]) => {
-    return {
-        'hora_ingreso': key,
-        'cantidad': value
-    }
-})
-console.log(data2)
+  let dataPalermo = data.filter(d => d.domicilio_barrio == "PALERMO");
+  let dataCaballito = data.filter(d => d.domicilio_barrio == "CABALLITO");
+  
+  let cant_autos_palermo = d3.rollup(dataPalermo, v => v.length, d => d.hora_ingreso);
+  let dataPalermo2 = Array.from(cant_autos_palermo).map(([key, value]) => {
+      return {
+          'hora_ingreso': key,
+          'cantidad': value,
+          'domicilio_barrio': 'PALERMO'
+      }
+  });
 
-  let datosFiltrados = data.filter(d => d.domicilio_barrio == "palermo" 
-  && d.domicilio_barrio == "recoleta"
-  && d.hora_ingreso )
-  console.log(datosFiltrados)
+  let cant_autos_caballito = d3.rollup(dataCaballito, v => v.length, d => d.hora_ingreso);
+  let dataCaballito2 = Array.from(cant_autos_caballito).map(([key, value]) => {
+      return {
+          'hora_ingreso': key,
+          'cantidad': value,
+          'domicilio_barrio': 'CABALLITO'
+      }
+  });
+
+  let data2 = dataPalermo2.concat(dataCaballito2);
 
 
   // Guardamos el svg generado en la variable chart
@@ -27,7 +34,6 @@ console.log(data2)
        x: {
          type: 'time',
          tickFormat: d3.timeFormat('%H'),
-         
        },
         y: { 
           grid: true,
@@ -35,11 +41,12 @@ console.log(data2)
       },
       
       marks: [
-        Plot.dot(data, 
+        Plot.dot(data2, 
           Plot.binX(
             { y: 'count', title: d => d[0].hora_ingreso},
             {
               //fill: "domilicio_barrio", 
+              //r: "cantidad", title: d => d.cantidad,
               x: d => d3.timeParse('%H:%M:%S')(d.hora_ingreso),
               thresholds: d3.timeHour,
             },
@@ -53,10 +60,10 @@ console.log(data2)
       color: {
         legend: true,
       },
-      // facet:{
-      //   data: data,
-      //   x: 'domicilio_barrio',
-      // },
+      facet:{
+        data: data2,
+        x: 'domicilio_barrio',
+      },
 
     });
 
@@ -64,4 +71,5 @@ console.log(data2)
  d3.select('#chart_3').append(() => chart)
     
 });
+
 
