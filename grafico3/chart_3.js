@@ -1,58 +1,29 @@
-// config. fecha español
-d3.json('https://cdn.jsdelivr.net/npm/d3-time-format@3/locale/es-ES.json').then(locale => {
-  d3.timeFormatDefaultLocale(locale)
-})
+d3.dsv(';', '../data/147_vehiculos_mal_estacionados.csv', d3.autoType).then(data => {
 
-d3.dsv(';',  '../data/147_vehiculos_mal_estacionados.csv', d3.autoType).then(data => {
-  console.log(data)
+  const datosPorBarrio = Array.from(d3.group(data, d => d.domicilio_barrio));
 
-var cant_autos = d3.rollup(data, v => v.length, d => d.hora_ingreso)
-console.log(cant_autos)
-var data2 = Array.from(cant_autos).map(([key, value]) => {
-    return {
-        'hora_ingreso': key,
-        'cantidad': value
-    }
-})
-
-console.log(data2)
-
-
-  // Guardamos el svg generado en la variable chart
-    let chart = Plot.plot({
-       x: {
-         type: 'time',
-         tickFormat: d3.timeFormat('%H'),
-         
-       },
-        y: { 
-          grid: true,
-          label: 'cantidad ',
+  const charts = datosPorBarrio.map(([barrio, datos]) => {
+    return Plot.plot({
+      title: barrio,
+      x: {
+        type: 'time',
+        tickFormat: d3.timeFormat('%H'),
       },
-      
+      y: { 
+        grid: true,
+        label: 'cantidad ',
+      },
       marks: [
-        Plot.dot(data,
-          // y: "domicilio_barrio",
-          // x: "time",
-          // r: "cantidad",
-          // fill: "prestacion",
-          
-          
+        Plot.dot(datos, 
           Plot.binX(
             { y: 'count', title: d => d[0].hora_ingreso},
-            
             {
-              fill: "genero",  
-              // https://github.com/d3/d3-time-format
               x: d => d3.timeParse('%H:%M:%S')(d.hora_ingreso),
-              // https://github.com/d3/d3-time#timeHour
-              // Agrupamos en intervalo de horas
               thresholds: d3.timeHour,
             },
           ),
         ),
       ],
-  
       grid: true,
       line: true,
       nice: true,
@@ -60,8 +31,10 @@ console.log(data2)
         legend: true,
       },
     });
+  });
 
- /* Agregamos al DOM la visualización chartMap */
- d3.select('#chart_3').append(() => chart)
+  const grid = Plot.grid(charts, { columns: 2 });
+  d3.select('#chart_3').append(() => grid);
 });
+
 
