@@ -1,6 +1,6 @@
 /* Reset CSS */
 * {
-    margin: 0;
+    margin: auto;
     padding: 0;
     box-sizing: border-box;
   }
@@ -26,19 +26,66 @@
     height: 40px;
     width: auto;
     position: absolute;
-    margin: 5px;
     margin-left: 30px;
     
   }
-  
-  header h1 {
+
+  /* Estilos para la barra de búsqueda */
+.search-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  height: 40px;
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 0 16px;
+  float: right;
+}
+
+.search-box input[type="text"] {
+  background-color: transparent;
+  border: none;
+  color: #333;
+  flex: 1;
+  font-size: 16px;
+  outline: none;
+}
+
+.search-box input[type="submit"] {
+  background-color: #313c4e;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 12px;
+  padding: 8px 16px;
+}
+
+.search-box input[type="submit"]:hover {
+  background-color: #FFD100;
+  color: #fff;
+}
+
+  #introductorio h1 {
     font-size: 2rem;
     font-weight: bold;
     text-align: center;
   }
+  #introductorio p{
+    text-align: center;
+  }
   
+  * p {
+    text-align: center;
+  }
+
   /* Estilo de la barra de navegación */
   nav {
+    margin-top: 40px;
     background-color: #e7e7e7;
     border-top: 2px solid #FFD100;
     border-bottom: 2px solid #FFD100;
@@ -71,6 +118,10 @@
   main {
     margin: 30px;
   }
+
+  #chart_1 svg{
+    margin: auto;
+  }
   
   main h2 {
     font-size: 1.5rem;
@@ -80,11 +131,6 @@
   
   main p {
     margin: 15px 0;
-  }
-
-  #chart_1 svg{
-/*    width: 300px; */
-    height: auto;
   }
 
   figcaption {
