@@ -82,8 +82,19 @@
     margin: 15px 0;
   }
 
+
+  #chart_1_cointeiner {
+    max-width: 800px;
+    position: relative;
+  }
+  
+  #chart_1.legend{
+    width: 30%;
+  }
+
   #chart_1 svg{
-    width: 900px;
+    width: 100%;
+    height: auto;
   }
   
 
