@@ -13,7 +13,7 @@ d3.dsv(';', '../data/147_vehiculos_mal_estacionados.csv', d3.autoType).then(data
 
   var chart = Plot.plot({
       color: {
-          domain: ["Pocos", "Muchos"],
+          //    domain: ["Pocos", "Muchos"],
           range: ["rgb(198,219,239)", "rgb(8,69,148)"],
           legend: true,
       },
