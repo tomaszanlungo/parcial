@@ -117,6 +117,13 @@
   /* Estilo del contenido principal */
   main {
     margin: 30px;
+    font-family: 'Times New Roman', Times, serif;
+  } 
+
+  #contenedor-con-sombra {
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+    padding: 10px;
   }
 
   #chart_1 svg{
