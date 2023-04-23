@@ -15,7 +15,7 @@ d3.dsv(';', '../data/147_vehiculos_mal_estacionados.csv', d3.autoType).then(data
       color: {
           domain: ["Pocos", "Muchos"],
           range: ["rgb(198,219,239)", "rgb(8,69,148)"],
-          legend: true
+          legend: true,
       },
       marks: [
           Plot.barX(data2, { y: 'canal', x: 'cantidad', fill: d => d.cantidad > 4000 ? "rgb(8,69,148)" : "rgb(198,219,239)" }),
