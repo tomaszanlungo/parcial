@@ -1,6 +1,6 @@
 /* Reset CSS */
 * {
-    margin: auto;
+    margin: auto; /* centro todo */
     padding: 0;
     box-sizing: border-box;
   }
@@ -164,8 +164,6 @@ footer li {
     margin-bottom: 15px;
     margin-right: 30px;
 }
-
-
 
 footer h3 {
   font-size: 18px;
