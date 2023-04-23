@@ -52,10 +52,11 @@ d3.dsv(';',  '../data/147_vehiculos_mal_estacionados.csv', d3.autoType).then(dat
        x: {
          type: 'time',
          tickFormat: d3.timeFormat('%H'),
+         label: 'Horas',
        },
         y: { 
           grid: true,
-          label: 'cantidad ',
+          label: 'Cantidad ',
       },
       
       marks: [
@@ -82,6 +83,7 @@ d3.dsv(';',  '../data/147_vehiculos_mal_estacionados.csv', d3.autoType).then(dat
       facet:{
         data: data2,
         x: 'domicilio_barrio',
+        label:'',
       },
 
     });
