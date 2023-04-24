@@ -1,34 +1,33 @@
 /* Reset CSS */
 * {
-    margin: auto; /* centro todo */
+    margin: auto;
     padding: 0;
     box-sizing: border-box;
   }
-  
-  /* Estilo del cuerpo de la página */
-  body {
-    background-color: #fff;
-    font-family: "Arial", sans-serif;
-    font-size: 16px;
-    color: #222;
-    line-height: 1.5;
-    margin: 0;
-  }
-  
-  /* Estilo del encabezado */
-  header {
-    background-color: #fff;
-    color: #4d4d4d;
-    padding: 10px 0;
-  }
 
-  .ba {
-    height: 40px;
-    width: auto;
-    position: absolute;
-    margin-left: 30px;
-    
-  }
+/* Estilo del cuerpo de la página */
+body {
+  background-color: #fff;
+  font-family: "Arial", sans-serif;
+  font-size: 16px;
+  color: #222;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Estilo del encabezado */
+header {
+  background-color: #fff;
+  color: #4d4d4d;
+  padding: 10px 0;
+}
+
+.ba {
+  height: 40px;
+  width: auto;
+  position: absolute;
+  margin-left: 30px;  
+}
 
   /* Estilos para la barra de búsqueda */
 .search-box {
@@ -70,82 +69,98 @@
   color: #fff;
 }
 
-  #introductorio h1 {
-    font-size: 2rem;
-    font-weight: bold;
-    text-align: center;
-  }
-  #introductorio p{
-    text-align: center;
-  }
-  
-  * p {
-    text-align: center;
-  }
+#introductorio h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  font-size: 3em;
+  margin: 0.3em;
+  padding-top: 70px;
+}
 
-  /* Estilo de la barra de navegación */
-  nav {
-    margin-top: 40px;
-    background-color: #e7e7e7;
-    border-top: 2px solid #FFD100;
-    border-bottom: 2px solid #FFD100;
-    text-align: center;
-  }
-  
-  nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  nav ul li {
-    display: inline-block;
-  }
-  
-  nav ul li a {
-    color: #4d4d4d;
-    display: block;
-    padding: 10px 20px;
-    text-decoration: none;
-  }
-  
-  nav ul li a:hover {
-    background-color: #313c4e;
-    color: #fff;
-  }
-  
-  /* Estilo del contenido principal */
-  main {
-    margin: 30px;
-    font-family: 'Times New Roman', Times, serif;
-  } 
+#epi1{
+  margin-left: 35%;
+}
 
-  #contenedor-con-sombra {
-    border: 1px solid #ccc;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
-    padding: 10px;
-  }
+h2{
+  font-size: 1.3em;
+  text-align: center;
+  /*margin: 0.5em 0 0.5em 0; */
+  margin-left: 6em;
+  margin-right: 6em;
+}
 
-  #chart_1 svg{
-    margin: auto;
-  }
-  
-  main h2 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin: 30px 0 15px;
-  }
-  
-  main p {
-    margin: 15px 0;
-  }
+h3{
+  font-size: 1.8em;
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
 
-  figcaption {
-    font-family: Arial, sans-serif;
-    font-size: 12px;
-    margin-top: 10px;
-  }
-  
+* p {
+  padding-top: 60px;
+  text-align: left;
+  font-size: 1.2em;
+  margin: 0.5em;
+}
+
+#pie{
+  margin-top: 7em;
+}
+
+/* Estilo de la barra de navegación */
+nav {
+  margin-top: 40px;
+  background-color: #e7e7e7;
+  border-top: 2px solid #FFD100;
+  border-bottom: 2px solid #FFD100;
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline-block;
+}
+
+nav ul li a {
+  color: #4d4d4d;
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  background-color: #313c4e;
+  color: #fff;
+}
+
+/* Estilo del contenido principal */
+main {
+  margin: 30px;
+  font-family: 'Times New Roman', Times, serif;
+} 
+
+
+#contenedor-con-sombra {
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+  padding: 10px;
+  padding-left: 15%;
+  padding-right: 15%;
+
+}
+
+
+figcaption {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
   /* Estilos para el footer */
 footer {
   border-top: 2px solid #FFD100;
