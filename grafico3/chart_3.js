@@ -10,7 +10,7 @@ d3.dsv(';',  '../data/147_vehiculos_mal_estacionados.csv', d3.autoType).then(dat
   let dataCaballito = data.filter(d => d.domicilio_barrio == "CABALLITO");
   let dataVilla = data.filter(d => d.domicilio_barrio == "VILLA URQUIZA");
   
-  let cant_autos_palermo = d3.rollup(dataPalermo, v => v.length, d => d.hora_ingreso);
+  let cant_autos_palermo = d3.rollup(dataPalermo, v => v.length, d => d.hora_ingreso.split(':')[0] + ':00:00');
   let dataPalermo2 = Array.from(cant_autos_palermo).map(([key, value]) => {
       return {
           'hora_ingreso': key,
@@ -19,7 +19,7 @@ d3.dsv(';',  '../data/147_vehiculos_mal_estacionados.csv', d3.autoType).then(dat
       }
   });
 
-  let cant_autos_caballito = d3.rollup(dataCaballito, v => v.length, d => d.hora_ingreso);
+  let cant_autos_caballito = d3.rollup(dataCaballito, v => v.length, d => d.hora_ingreso.split(':')[0] + ':00:00');
   let dataCaballito2 = Array.from(cant_autos_caballito).map(([key, value]) => {
       return {
           'hora_ingreso': key,
@@ -28,7 +28,7 @@ d3.dsv(';',  '../data/147_vehiculos_mal_estacionados.csv', d3.autoType).then(dat
       }
   });
 
-  let cant_autos_villa= d3.rollup(dataVilla, v => v.length, d => d.hora_ingreso);
+  let cant_autos_villa= d3.rollup(dataVilla, v => v.length, d => d.hora_ingreso.split(':')[0] + ':00:00');
   let dataVilla2 = Array.from(cant_autos_villa).map(([key, value]) => {
       return {
           'hora_ingreso': key,
@@ -49,43 +49,33 @@ d3.dsv(';',  '../data/147_vehiculos_mal_estacionados.csv', d3.autoType).then(dat
 
   // Guardamos el svg generado en la variable chart
     let chart = Plot.plot({
-       x: {
-         type: 'time',
-         tickFormat: d3.timeFormat('%H'),
-         label: 'Horas',
-       },
-        y: { 
-          grid: true,
-          label: 'Cantidad ',
-      },
-      
       marks: [
-        Plot.dot(data2, 
-          Plot.binX(
-            { y: 'count', title: d => d[0].hora_ingreso},
-            { 
-              fill: d => d.cantidad > 30 ? "rgb(8,69,148)" : "rgb(255,0,0)",
-              x: d => d3.timeParse('%H:%M:%S')(d.hora_ingreso),
-              thresholds: d3.timeHour,
-            },
-          ),
-        ),
-        
+        Plot.dot(data2, {
+          x: 'hora_ingreso',
+          y: 'cantidad',
+          fill: d => d.cantidad > 30 ? "rgb(8,69,148)" : "rgb(158,202,225)"
+        }),
       ],
-  
-      grid: true,
-      line: true,
-      width: 900,
-      nice: true,
-      color: {
-        legend: true,
+
+      x: {
+        label: 'Horas',
+      },      
+
+      y: { 
+        grid: true,
+        label: 'Cantidad ',
       },
       facet:{
         data: data2,
         x: 'domicilio_barrio',
         label:'',
       },
-
+      
+      grid: true,
+      line: true,
+      width: 900,
+      nice: true,
+      
     });
 
  /* Agregamos al DOM la visualización chartMap */
