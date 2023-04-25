@@ -83,11 +83,14 @@ header {
 }
 
 h2{
-  font-size: 1.3em;
+  font-size: 1.28em;
   text-align: center;
   /*margin: 0.5em 0 0.5em 0; */
   margin-left: 6em;
   margin-right: 6em;
+  font-weight: 0.45;
+ 
+  
 }
 
 h3{
