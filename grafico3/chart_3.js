@@ -47,36 +47,45 @@ d3.dsv(';',  '../data/147_vehiculos_mal_estacionados.csv', d3.autoType).then(dat
     //   return scale(d.cantidad);
     // };
 
-  // Guardamos el svg generado en la variable chart
-    let chart = Plot.plot({
-      marks: [
-        Plot.dot(data2, {
-          x: 'hora_ingreso',
-          y: 'cantidad',
-          fill: d => d.cantidad > 30 ? "rgb(8,69,148)" : "rgb(158,202,225)"
-        }),
-      ],
+    
+let xTicks = d3.ticks(
+  d3.timeParse('%H:%M:%S')('00:00:00'), // Valor inicial
+  d3.timeParse('%H:%M:%S')('23:59:59'), // Valor final
+  d3.timeHour.every(2) // Intervalo de 2 horas
+);
 
-      x: {
-        label: 'Horas',
-      },      
+let chart = Plot.plot({
+  marks: [
+    Plot.dot(data2, {
+      x: 'hora_ingreso',
+      y: 'cantidad',
+      x: d => d3.timeParse('%H:%M:%S')(d.hora_ingreso),
+      fill: d => d.cantidad > 30 ? "rgb(8,69,148)" : "rgb(158,202,225)"
+    }),
+  ],
 
-      y: { 
-        grid: true,
-        label: 'Cantidad ',
-      },
-      facet:{
-        data: data2,
-        x: 'domicilio_barrio',
-        label:'',
-      },
-      
-      grid: true,
-      line: true,
-      width: 900,
-      nice: true,
-      
-    });
+  x: {
+    label: 'Horas',
+    tickValues: xTicks,
+    tickFormat: d3.timeFormat('%H'),
+  },
+
+  y: { 
+    grid: true,
+    label: 'Cantidad ',
+  },
+  facet:{
+    data: data2,
+    x: 'domicilio_barrio',
+    label:'',
+  },
+
+   grid: true,
+   line: true,
+   width: 900,
+   nice: true,
+});
+
 
  /* Agregamos al DOM la visualización chartMap */
  d3.select('#chart_3').append(() => chart)
