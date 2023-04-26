@@ -26,7 +26,6 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
       domain: barrios, // Objeto GeoJson a encuadrar
     },
     color: {
-      // Quantize continuo (cant. denuncias) -> discreto (cant. colores)
       type: 'quantize', 
       n: 7,
       scheme: 'Blues',
@@ -34,7 +33,6 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
       legend: true,
       width: 350,
       height: 62,
-    
     },
     width: 500,
     marks: [
@@ -53,10 +51,6 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
           dx: -3,
           filter: (d) => d.properties.DENUNCIAS > 400 //solo muestro el nombre de los barrios con denuncias mayores a 80
         }),{
-          style: {
-            "font-size": "24px", // Establecer el tamaño de fuente en 24px
-            "font-weight": "bold" // Hacer el texto más grueso
-          }
         }
       )
     ],
