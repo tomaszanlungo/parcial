@@ -1,2 +1,1 @@
 # parcial
-prueba
