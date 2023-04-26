@@ -38,19 +38,10 @@ d3.dsv(';',  '../data/147_vehiculos_mal_estacionados.csv', d3.autoType).then(dat
   });
 
   let data2 = dataPalermo2.concat(dataCaballito2).concat(dataVilla2);
-  // Definimos la escala de color en función de la cantidad de autos
-  
-    // let getColor = d => {
-    //   let scale = d3.scaleSequential()
-    //     .interpolator(d3.interpolateViridis)
-    //     .domain([0, d3.max(data2, d => d.cantidad)]);
-    //   return scale(d.cantidad);
-    // };
-
     
 let xTicks = d3.ticks(
-  d3.timeParse('%H:%M:%S')('00:00:00'), // Valor inicial
-  d3.timeParse('%H:%M:%S')('23:59:59'), // Valor final
+  d3.timeParse('%H:%M:%S')('00:00:00'), 
+  d3.timeParse('%H:%M:%S')('23:59:59'), 
   d3.timeHour.every(2) // Intervalo de 2 horas
 );
 
@@ -80,11 +71,16 @@ let chart = Plot.plot({
     label:'',
   },
 
+  style: {
+    fontSize: 13,
+  },
+
    grid: true,
    line: true,
    width: 900,
    nice: true,
 });
+
 
 
  /* Agregamos al DOM la visualización chartMap */
