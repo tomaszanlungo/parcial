@@ -32,11 +32,11 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
       scheme: 'Blues',
       label: 'Cantidad de denuncias',
       legend: true,
-      width: 250,
-      height: 55,
+      width: 350,
+      height: 62,
     
     },
-    width: 400,
+    width: 500,
     marks: [
       Plot.geo(barrios, {
         fill: d => d.properties.DENUNCIAS,
@@ -49,8 +49,7 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
           text: (d) => d.properties.BARRIO,
           fill: "black",
           stroke: "white",
-          fontSize: 9,
-        
+          fontSize: 11,
           dx: -3,
           filter: (d) => d.properties.DENUNCIAS > 400 //solo muestro el nombre de los barrios con denuncias mayores a 80
         }),{

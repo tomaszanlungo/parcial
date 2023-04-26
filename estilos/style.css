@@ -70,39 +70,35 @@ header {
 }
 
 #introductorio h1 {
-  font-size: 2rem;
+  font-size: 3.75em;
   font-weight: bold;
   text-align: center;
-  font-size: 3em;
   margin: 0.3em;
   padding-top: 70px;
 }
 
-#epi1{
-  margin-left: 35%;
-}
 
 h2{
-  font-size: 1.28em;
+  font-size: 1.7em;
   text-align: center;
   /*margin: 0.5em 0 0.5em 0; */
   margin-left: 6em;
   margin-right: 6em;
-  font-weight: 0.45;
- 
-  
+  font-weight:lighter;
 }
 
 h3{
-  font-size: 1.8em;
+  text-transform: uppercase;
+  font-size: 2em;
   padding-top: 50px;
   padding-bottom: 20px;
+  margin: 0.4em;
 }
 
 * p {
-  padding-top: 60px;
-  text-align: left;
-  font-size: 1.2em;
+  text-align: justify;
+  padding-top: 70px;
+  font-size: 1.3em;
   margin: 0.5em;
 }
 
